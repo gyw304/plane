@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="GBK">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<title>寻找淘房</title>
+    <style>
+        body { margin: 0; background-color: #1d3339}
+        .sub-btns{
+            text-align: center;
+            padding-top:.7rem;
+        }
+        .sub-btns input{
+            width: 5.05rem;
+            height:1.65rem;
+            background-position: 0 -19.3rem;
+            background-color: transparent;
+            border: none;
+        }
+        .replay-btn{
+            text-align: center;
+            padding-top:.3rem
+        }
+        .replay-btn button{
+            width: 5.05rem;
+            height:1.622rem;
+            background-position: 0 -21.15rem;
+            background-color: transparent;
+            border: none;
+        }
+        #login-screen{
+            position: absolute;
+            width: 12.9rem;
+            height:13.6rem;
+            top:50%;
+            left:50%;
+            margin-left:-6.45rem;
+            margin-top:-6.2rem;
+            background-position: 0 0;
+            display: none;
+        }
+        .ele{
+            background-image: url('assets/ele.png');
+            background-size: 16rem;
+        }
+        .from{
+            width:10.6rem;
+            margin:2rem auto 0
+        }
+        .from .frm{
+            width:10.6rem;
+            height:1.65rem;
+            margin-bottom:1rem
+        }
+        .from .frm.name{
+            background-position: 0 -14.25rem;
+        }
+        .from .frm.tel{
+            background-position: 0 -16.75rem;
+        }
+        .from .frm input{
+            width:7rem;
+            height:1.1rem;
+            border: none;
+            position: relative;
+            top:.1rem;
+            left:3.21rem;
+            background: none;
+            color:#ed6d00;
+        }
+    </style>
+    <script>
+        var _useid = 0; //用户id
+        var _nickName='';//用户名称
+        var _score=0;//用户成绩
+        var _useRank = '1000';//用户名次
+        var _bestScore = '10000';
+        var _bestRank = '1';
+
+        var islogin = 1; //0未提交信息 1提交过信息
+
+        var j_rankInfo = [
+            {
+                "j_Ranking": "01",
+                "j_NickName": "王哈2了哈",
+                'j_score':'1000光年'
+            },
+            {
+                "j_Ranking": "02",
+                "j_NickName": "王哈了哈",
+                'j_score':'100000光年'
+            }
+            ,
+            {
+                "j_Ranking": "03",
+                "j_NickName": "王哈了哈",
+                'j_score':'1000光年'
+            }
+            ,
+            {
+                "j_Ranking": "04",
+                "j_NickName": "王哈了哈",
+                'j_score':'1000光年'
+            }
+            ,
+            {
+                "j_Ranking": "05",
+                "j_NickName": "王哈了哈",
+                'j_score':'1000光年'
+            }
+        ];
+    </script>
+    <script src="phaser.min.js"></script>
+    <script src="Boot.js?17222"></script>
+    <script src="Preloader.js?2222287"></script>
+    <script src="MainMenu.js?1272202"></script>
+    <script src="showRule.js?17"></script>
+    <script src="login.js?17"></script>
+    <script src="Game.js?12207"></script>
+    <script src="ranking.js?27"></script>
+    <script src="zepto.min.js"></script>
+</head>
+<body>
+
+<div id="login-screen" class="ele">
+    <div class="from">
+        <div class="frm ele name"><input type="text"/></div>
+        <div class="frm ele tel"><input type="text"/></div>
+        <div class="sub-btns"><input type="submit" value="" class="ele" id="subBtn"/></div>
+        <div class="replay-btn"><button id="replay-btn" class="ele"></button></div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        var game = new Phaser.Game(640, 1010, Phaser.CANVAS, 'game');
+        game.state.add('Boot', cycleRacing.Boot);
+        game.state.add('Preloader', cycleRacing.Preloader);
+        game.state.add('MainMenu', cycleRacing.MainMenu);
+        game.state.add('showRule', cycleRacing.showRule);
+        game.state.add('login', cycleRacing.login);
+        game.state.add('Game', cycleRacing.Game);
+        game.state.add('ranking', cycleRacing.ranking);
+        game.state.start('Boot');
+    })();
+
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+
+</script>
+</body>
+</html>
